@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  app:
+    image: ekkarat/app:1.0.0
+    container_name: my-app
+    ports:
+
+    environment:
