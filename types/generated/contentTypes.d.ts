@@ -807,6 +807,11 @@ export interface ApiClassroomClassroom extends Schema.CollectionType {
       'oneToMany',
       'api::room.room'
     >;
+    students: Attribute.Relation<
+      'api::classroom.classroom',
+      'manyToMany',
+      'api::student.student'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -859,12 +864,18 @@ export interface ApiStudentStudent extends Schema.CollectionType {
     singularName: 'student';
     pluralName: 'students';
     displayName: 'Student';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
+    classrooms: Attribute.Relation<
+      'api::student.student',
+      'manyToMany',
+      'api::classroom.classroom'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
