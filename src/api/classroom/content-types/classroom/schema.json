@@ -11,12 +11,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "students": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::room.room",
-      "inversedBy": "classrooms"
-    },
     "teachers": {
       "type": "relation",
       "relation": "oneToMany",
