@@ -881,7 +881,7 @@ export interface ApiStudentStudent extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String & Attribute.Required;
+    name: Attribute.Text & Attribute.Required;
     classrooms: Attribute.Relation<
       'api::student.student',
       'manyToMany',
