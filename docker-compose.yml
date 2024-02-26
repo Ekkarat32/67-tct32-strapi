@@ -5,7 +5,7 @@ services:
     image: ekkarat/app:1.0.0
     container_name: my-app
     ports:
-       - 1337:1337
+       - 8080:1337
     environment:
       - DATABASE_CLIENT=${DATABASE_CLIENT}
       - DATABASE_HOST=${DATABASE_HOST}
@@ -14,3 +14,13 @@ services:
       - DATABASE_USERNAME=${DATABASE_USERNAME}
       - DATABASE_PASSWORD=${DATABASE_PASSWORD}
       - DATABASE_SSL=${DATABASE_SSL}
+
+  db:
+    image: ekkarat/app:1.0.0
+    container_name: my-db
+    environment:
+      - POSTGRES_USER=${DATABASE_USERNAME}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+    ports:
+      - 5433:5432
