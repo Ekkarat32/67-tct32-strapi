@@ -14,6 +14,18 @@
     "name": {
       "type": "string",
       "required": true
+    },
+    "classrooms": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::classroom.classroom",
+      "mappedBy": "students"
+    },
+    "classroom": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::classroom.classroom",
+      "inversedBy": "rooms"
     }
   }
 }

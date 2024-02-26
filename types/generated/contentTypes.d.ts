@@ -781,6 +781,55 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiClassroomClassroom extends Schema.CollectionType {
+  collectionName: 'classrooms';
+  info: {
+    singularName: 'classroom';
+    pluralName: 'classrooms';
+    displayName: 'Classroom';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    students: Attribute.Relation<
+      'api::classroom.classroom',
+      'manyToMany',
+      'api::room.room'
+    >;
+    teachers: Attribute.Relation<
+      'api::classroom.classroom',
+      'oneToMany',
+      'api::room.room'
+    >;
+    subjects: Attribute.Relation<
+      'api::classroom.classroom',
+      'oneToMany',
+      'api::room.room'
+    >;
+    rooms: Attribute.Relation<
+      'api::classroom.classroom',
+      'oneToMany',
+      'api::room.room'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::classroom.classroom',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::classroom.classroom',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiRoomRoom extends Schema.CollectionType {
   collectionName: 'rooms';
   info: {
@@ -793,6 +842,16 @@ export interface ApiRoomRoom extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
+    classrooms: Attribute.Relation<
+      'api::room.room',
+      'manyToMany',
+      'api::classroom.classroom'
+    >;
+    classroom: Attribute.Relation<
+      'api::room.room',
+      'manyToOne',
+      'api::classroom.classroom'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -911,6 +970,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::classroom.classroom': ApiClassroomClassroom;
       'api::room.room': ApiRoomRoom;
       'api::student.student': ApiStudentStudent;
       'api::subject.subject': ApiSubjectSubject;
