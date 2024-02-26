@@ -4,7 +4,8 @@
   "info": {
     "singularName": "classroom",
     "pluralName": "classrooms",
-    "displayName": "Classroom"
+    "displayName": "Classroom",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -34,6 +35,18 @@
       "relation": "manyToMany",
       "target": "api::student.student",
       "mappedBy": "classrooms"
+    },
+    "subject": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::subject.subject",
+      "mappedBy": "classroom"
+    },
+    "teacher": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::teacher.teacher",
+      "mappedBy": "classroom"
     }
   }
 }

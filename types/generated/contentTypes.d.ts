@@ -787,6 +787,7 @@ export interface ApiClassroomClassroom extends Schema.CollectionType {
     singularName: 'classroom';
     pluralName: 'classrooms';
     displayName: 'Classroom';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -811,6 +812,16 @@ export interface ApiClassroomClassroom extends Schema.CollectionType {
       'api::classroom.classroom',
       'manyToMany',
       'api::student.student'
+    >;
+    subject: Attribute.Relation<
+      'api::classroom.classroom',
+      'oneToMany',
+      'api::subject.subject'
+    >;
+    teacher: Attribute.Relation<
+      'api::classroom.classroom',
+      'oneToMany',
+      'api::teacher.teacher'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -900,12 +911,18 @@ export interface ApiSubjectSubject extends Schema.CollectionType {
     singularName: 'subject';
     pluralName: 'subjects';
     displayName: 'Subject';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
+    classroom: Attribute.Relation<
+      'api::subject.subject',
+      'manyToOne',
+      'api::classroom.classroom'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -930,12 +947,18 @@ export interface ApiTeacherTeacher extends Schema.CollectionType {
     singularName: 'teacher';
     pluralName: 'teachers';
     displayName: 'Teacher';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
+    classroom: Attribute.Relation<
+      'api::teacher.teacher',
+      'manyToOne',
+      'api::classroom.classroom'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "subject",
     "pluralName": "subjects",
-    "displayName": "Subject"
+    "displayName": "Subject",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,6 +15,12 @@
     "name": {
       "type": "string",
       "required": true
+    },
+    "classroom": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::classroom.classroom",
+      "inversedBy": "subject"
     }
   }
 }
