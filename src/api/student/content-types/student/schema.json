@@ -16,6 +16,12 @@
       "type": "text",
       "required": true
     },
+    "mobile": {
+      "type": "string",
+      "required": true,
+      "minLength": 10,
+      "maxLength": 10
+    },
     "classrooms": {
       "type": "relation",
       "relation": "manyToMany",

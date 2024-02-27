@@ -882,6 +882,12 @@ export interface ApiStudentStudent extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.Text & Attribute.Required;
+    mobile: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 10;
+        maxLength: 10;
+      }>;
     classrooms: Attribute.Relation<
       'api::student.student',
       'manyToMany',
