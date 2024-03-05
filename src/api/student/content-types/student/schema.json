@@ -16,7 +16,7 @@
       "type": "text",
       "required": true
     },
-    "mobile": {
+    "phoneNumber": {
       "type": "string",
       "required": true,
       "minLength": 10,

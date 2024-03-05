@@ -882,7 +882,7 @@ export interface ApiStudentStudent extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.Text & Attribute.Required;
-    mobile: Attribute.String &
+    phoneNumber: Attribute.String &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
         minLength: 10;
