@@ -46,5 +46,3 @@ const decrypt = (hashedValue, salt) => {
     hash.update(dataWithSalt);
     return hash.digest('hex'); // ให้คืนค่าเป็นรหัสที่ถอดรหัสแล้วและเป็นข้อความปกติ
 }
-
-
